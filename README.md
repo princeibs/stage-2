@@ -1,73 +1,163 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# REST API to perform CRUD operation of a "person" resources
+This is a simple REST API that can perform create, read, update, and delete operation on a "person" resources. The "person" resources in this case are the details of a user.
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## TL;DR
+- API hosted on https://hng-stage-2-wewj.onrender.com
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## UML Diagram
+<img width="634" alt="image" src="https://github.com/princeibs/stage-2/assets/64266194/14a81cc0-c862-485e-85f5-ad5f78136bd8">
 
-## Description
+## Prerequisites
+Before starting this project, please ensure you have the following packages installed on your computer:
+1. Git
+2. Node (v16.x.x and above)
+3. NPM (v8.x.x and above)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
-
+## How to set up
+1. Clone the repository into your computer with the command:
 ```bash
-$ npm install
+git clone https://github.com/princeibs/stage-2.git
+```
+2. Open project folder in any code editor of your choice (VSCode recommended)
+3. Open a terminal and navigate to the project directory (folder)
+4. Inside the terminal, run the command below to install project dependencies/packages:
+```bash
+npm install
+```
+5. After installation is complete, create a `.env` file in the root directory of the project and add the `MONGODB_CONN_URI` environmental variable. (You need to create a cluster in MongoDB Atlas in order to get a connection string)
+6. Start the local server using the command:
+```bash
+npm run start:dev
 ```
 
-## Running the app
+After completing the above steps, you will now have a local server running on port `5000` (http://localhost:5000)
 
-```bash
-# development
-$ npm run start
+Access the api endpoints using http://localhost:5000/api
 
-# watch mode
-$ npm run start:dev
+## API Endpoints
+The API provides the following endpoints to perform CRUD operations of a person
+- /api
+  - **GET**
+  - _/api/<user_id>_
+  - Gets the person with id <user_id>
+  - 
+  - **POST**
+  - _/api_
+  - Submit person data and store in database through request body
+  - 
+  - **PUT**
+  - _/api/<user_id>_
+  - Update data of person with id <user_id>. Send new data through request body
+  -  
+  - **DELETE**
+  - _/api/<user_id>_
+  - Delete data of person with id <user_id>
 
-# production mode
-$ npm run start:prod
+
+## Request/Response Formats
+
+### Create new person
+
+**Request Format:**
+- POST _/api_
+- Body:
+```json
+{
+  "firstName": "Ibrahim",
+  "lastName": "Suleiman"
+}
 ```
 
-## Test
+**Response Format (Created - 201):**
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+```json
+{
+  "statusCode": 201,
+  "message": "User created successfully",
+  "data": {
+    "firstName": "Ibrahim",
+    "lastName": "Suleiman",
+    "createdAt": "2023-09-12T06:03:07.936Z",
+    "updatedAt": "2023-09-12T06:03:07.936Z",
+    "_id": "64ffff1b286c5b986579e364",
+    "__v": 0
+  }
+}
 ```
 
-## Support
+### Read person details 
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+**Request Format:**
+- GET _/api/64ffff1b286c5b986579e364_
+- Body: empty
 
-## Stay in touch
+**Response Format (Success - 200):**
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```json
+{
+  "statusCode": 200,
+  "data": {
+    "_id": "64ffff1b286c5b986579e364",
+    "firstName": "Ibrahim",
+    "lastName": "Suleiman",
+    "createdAt": "2023-09-11T15:11:08.921Z",
+    "updatedAt": "2023-09-11T15:11:08.921Z",
+    "__v": 0
+  }
+}
+```
 
-## License
+### Update person details 
 
-Nest is [MIT licensed](LICENSE).
+**Request Format:**
+- PUT _/api/64ffff1b286c5b986579e364_
+- Body:
+```json
+{
+  "firstName": "Ibrahim",
+  "lastName": "Suleiman",
+  "otherNames": "Prince"
+}
+```
+**Response Format (Success - 200):**
+
+```json
+{
+  "statusCode": 200,
+  "message": "User with id 64ffff1b286c5b986579e364 updated successfully",
+  "data": {
+    "user": {
+      "_id": "64ffff1b286c5b986579e364",
+      "firstName": "Ibrahim",
+      "lastName": "Suleiman",
+      "createdAt": "2023-09-11T15:11:08.921Z",
+      "updatedAt": "2023-09-12T06:15:16.737Z",
+      "__v": 0,
+      "otherNames": "Prince"
+    }
+  }
+}
+```
+
+### Delete a Person 
+
+**Request Format:**
+- DELETE _/api/64ffff1b286c5b986579e364_
+- Body: empty
+
+**Response Format (Success - 200):**
+
+```json
+{
+  "statusCode": 200,
+  "message": "User with id 64ffff1b286c5b986579e364 deleted successfully"
+}
+```
+
+> **Note** _API is hosted on https://hng-stage-2-wewj.onrender.com_
+
+## Known Limitations and Assumptions
+- The reader already have a basic knowledge of backend web development
+- Authentication or authorization not implemented
+- Robust error handling not implemented
+- API might take some time to respond at first usage. Reason for this is the limitation [Render](https://render.com) placed on free web services. [Learn more](https://render.com/docs/free)
