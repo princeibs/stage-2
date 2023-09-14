@@ -25,7 +25,7 @@ This is a simple REST API that can perform create, read, update, and delete oper
 <!-- TOC --><a name="tldr"></a>
 ## TL;DR
 
-- API hosted on <https://hng-stage-2-wewj.onrender.com>
+- API hosted on <https://hng-stage-2-wewj.onrender.com/api>
 - Test endpoints automatically using [./test-script.sh](./test-script.sh)
 
 <!-- TOC --><a name="uml-diagram"></a>
