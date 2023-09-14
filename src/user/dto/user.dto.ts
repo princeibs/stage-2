@@ -2,18 +2,9 @@ import { IsMongoId, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 import { ObjectId } from 'mongoose';
 
 export class CreateUserDto {
-  @IsString({ message: "First name should be a string" })
+  @IsString({ message: "Name should be a string" })
   @IsNotEmpty()
-  readonly firstName: string;
-
-  @IsString({ message: "Last name should be a string" })
-  @IsNotEmpty()
-  readonly lastName: string;
-
-  @IsString()
-  @IsNotEmpty()
-  @IsOptional()
-  readonly otherNames: string;
+  readonly name: string;
 }
 
 export class GetUserDto {
@@ -23,18 +14,9 @@ export class GetUserDto {
 }
 
 export class UpdateUserDto {
-  @IsString({ message: "First name should be a string" })
+  @IsString({ message: "Name should be a string" })
   @IsNotEmpty()
-  readonly firstName: string;
-
-  @IsString({ message: "Last name should be a string" })
-  @IsNotEmpty()
-  readonly lastName: string;
-
-  @IsString()
-  @IsNotEmpty()
-  @IsOptional()
-  readonly otherNames: string;
+  readonly name: string
 }
 
 export class UpdateOrDeleteUserParamDto {
