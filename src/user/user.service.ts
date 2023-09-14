@@ -12,9 +12,7 @@ export class UserService {
   async createUser(createUserDto: CreateUserDto): Promise<ResInterface> {
     try {
       const user = new this.userModel({
-        firstName: createUserDto.firstName,
-        lastName: createUserDto.lastName,
-        otherNames: createUserDto.otherNames,
+        name: createUserDto.name,
         createdAt: new Date(),
         updatedAt: new Date(),
       });
@@ -57,9 +55,7 @@ export class UserService {
     const user = await this.userModel.findById(userId);
 
     if (user) {
-      user.firstName = updateUserDto.firstName || user.firstName;
-      user.lastName = updateUserDto.lastName || user.lastName;
-      user.otherNames = updateUserDto.otherNames || user.otherNames;
+      user.name = updateUserDto.name || user.name;
       user.updatedAt = new Date();
 
       user.save();
