@@ -20,7 +20,7 @@
   * [Known Limitations and Assumptions](#known-limitations-and-assumptions)
 
 
-This is a simple REST API that can perform create, read, update, and delete operation on a "person" resources. The "person" resources in this case are the details of a user.
+This is a simple REST API that can perform create, read, update, and delete operation on a "person" resource. The "person" resources in this case are the details of a user.
 
 <!-- TOC --><a name="tldr"></a>
 ## TL;DR
@@ -31,7 +31,9 @@ This is a simple REST API that can perform create, read, update, and delete oper
 <!-- TOC --><a name="uml-diagram"></a>
 ## UML Diagram
 
-<img width="634" alt="image" src="https://github.com/princeibs/stage-2/assets/64266194/14a81cc0-c862-485e-85f5-ad5f78136bd8">
+<img width="692" alt="image" src="https://github.com/princeibs/stage-2/assets/64266194/0baf9e63-0f9d-4215-937c-c93403c6af6e">
+
+
 
 <!-- TOC --><a name="prerequisites"></a>
 ## Prerequisites
@@ -73,7 +75,7 @@ Access the api endpoints using <http://localhost:5000/api>
 <!-- TOC --><a name="api-endpoints"></a>
 ## API Endpoints
 
-The API provides the following endpoints to perform CRUD operations of a person
+The API provides the following endpoints to perform CRUD operations on a person
 
 - /api
   - **GET**
@@ -105,8 +107,7 @@ The API provides the following endpoints to perform CRUD operations of a person
 
 ```json
 {
-  "firstName": "Ibrahim",
-  "lastName": "Suleiman"
+  "name": "Ibrahim Suleiman",
 }
 ```
 
@@ -117,11 +118,10 @@ The API provides the following endpoints to perform CRUD operations of a person
   "statusCode": 201,
   "message": "User created successfully",
   "data": {
-    "firstName": "Ibrahim",
-    "lastName": "Suleiman",
+    "name": "Ibrahim Suleiman",
     "createdAt": "2023-09-12T06:03:07.936Z",
     "updatedAt": "2023-09-12T06:03:07.936Z",
-    "_id": "64ffff1b286c5b986579e364",
+    "_id": "6503b4dd2af13db62dfba709",
     "__v": 0
   }
 }
@@ -132,7 +132,7 @@ The API provides the following endpoints to perform CRUD operations of a person
 
 **Request Format:**
 
-- GET _/api/64ffff1b286c5b986579e364_
+- GET _/api/6503b4dd2af13db62dfba709_
 - Body: empty
 
 **Response Format (Success - 200):**
@@ -141,9 +141,8 @@ The API provides the following endpoints to perform CRUD operations of a person
 {
   "statusCode": 200,
   "data": {
-    "_id": "64ffff1b286c5b986579e364",
-    "firstName": "Ibrahim",
-    "lastName": "Suleiman",
+    "_id": "6503b4dd2af13db62dfba709",
+    "name": "Ibrahim Suleiman",
     "createdAt": "2023-09-11T15:11:08.921Z",
     "updatedAt": "2023-09-11T15:11:08.921Z",
     "__v": 0
@@ -156,14 +155,12 @@ The API provides the following endpoints to perform CRUD operations of a person
 
 **Request Format:**
 
-- PUT _/api/64ffff1b286c5b986579e364_
+- PUT _/api/6503b4dd2af13db62dfba709_
 - Body:
 
 ```json
 {
-  "firstName": "Ibrahim",
-  "lastName": "Suleiman",
-  "otherNames": "Prince"
+  "name": "Suleiman Ibrahim",
 }
 ```
 
@@ -172,16 +169,14 @@ The API provides the following endpoints to perform CRUD operations of a person
 ```json
 {
   "statusCode": 200,
-  "message": "User with id 64ffff1b286c5b986579e364 updated successfully",
+  "message": "User with id 6503b4dd2af13db62dfba709 updated successfully",
   "data": {
     "user": {
-      "_id": "64ffff1b286c5b986579e364",
-      "firstName": "Ibrahim",
-      "lastName": "Suleiman",
+      "_id": "6503b4dd2af13db62dfba709",
+      "name": "Suleiman Ibrahim",
       "createdAt": "2023-09-11T15:11:08.921Z",
       "updatedAt": "2023-09-12T06:15:16.737Z",
-      "__v": 0,
-      "otherNames": "Prince"
+      "__v": 0
     }
   }
 }
@@ -192,7 +187,7 @@ The API provides the following endpoints to perform CRUD operations of a person
 
 **Request Format:**
 
-- DELETE _/api/64ffff1b286c5b986579e364_
+- DELETE _/api/6503b4dd2af13db62dfba709_
 - Body: empty
 
 **Response Format (Success - 200):**
@@ -200,7 +195,7 @@ The API provides the following endpoints to perform CRUD operations of a person
 ```json
 {
   "statusCode": 200,
-  "message": "User with id 64ffff1b286c5b986579e364 deleted successfully"
+  "message": "User with id 6503b4dd2af13db62dfba709 deleted successfully"
 }
 ```
 
