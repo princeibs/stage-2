@@ -8,8 +8,7 @@ curl -X 'POST' \
   -H 'accept: */*' \
   -H 'Content-Type: application/json' \
   -d '{
-  "firstName": "Ibrahim",
-  "lastName": "Suleiman"
+  "name": "Ibrahim Suleiman"
 }'
 echo -e "\n\n"
 
@@ -29,9 +28,7 @@ curl -X 'PUT' \
   -H 'accept: */*' \
   -H 'Content-Type: application/json' \
   -d '{
-  "firstName": "Elon",
-  "lastName": "Musk",
-  "otherNames": "Mark"
+  "name": "Prince"
 }'
 echo -e "\n\n"
 
