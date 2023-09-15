@@ -1,30 +1,40 @@
 #!/bin/bash
 
-# Create person
+# Create person and extract the ID
 echo "Creating new person..."
-echo -e "\n"
-curl -X 'POST' \
+response=$(curl -s -X 'POST' \
   'https://hng-stage-2-wewj.onrender.com/api' \
   -H 'accept: */*' \
   -H 'Content-Type: application/json' \
   -d '{
   "name": "Ibrahim Suleiman"
-}'
-echo -e "\n\n"
+}')
 
-# Get person details
+# Extract the _id value from the response using bash string manipulation
+user_id=$(echo "$response" | grep -o '"_id":"[^"]*' | cut -d'"' -f4)
+
+if [ -z "$user_id" ]; then
+  echo "Failed to extract user ID from the response."
+  exit 1
+fi
+
+echo "New person created with ID: $user_id"
+echo -e "\n"
+
+# Get person details using the extracted user_id
 echo "Getting person details..."
 echo -e "\n"
 curl -X 'GET' \
-  'https://hng-stage-2-wewj.onrender.com/api/65001219b997e6daf8cdac88' \
+  "https://hng-stage-2-wewj.onrender.com/api/$user_id" \
   -H 'accept: */*'
+
 echo -e "\n\n"
 
-# Update person details
+# Update person details using the extracted user_id
 echo "Updating person details..."
 echo -e "\n"
 curl -X 'PUT' \
-  'https://hng-stage-2-wewj.onrender.com/api/65001219b997e6daf8cdac88' \
+  "https://hng-stage-2-wewj.onrender.com/api/$user_id" \
   -H 'accept: */*' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -32,11 +42,11 @@ curl -X 'PUT' \
 }'
 echo -e "\n\n"
 
-# Delete person details
+# Delete person details using the extracted user_id
 echo "Deleting person details..."
 echo -e "\n"
 curl -X 'DELETE' \
-  'https://hng-stage-2-wewj.onrender.com/api/65001219b997e6daf8cdac88' \
+  "https://hng-stage-2-wewj.onrender.com/api/$user_id" \
   -H 'accept: */*'
 
 echo -e "\n\n"

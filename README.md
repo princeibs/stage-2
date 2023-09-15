@@ -1,7 +1,7 @@
 
 <!-- TOC -->
 <a name="rest-api-to-perform-crud-operation-of-a-person-resources"></a>
-# REST API to perform CRUD operation of a "person" resources
+# REST API to perform CRUD operation on a "person" resources
 
 - [REST API to perform CRUD operation of a "person" resources](#rest-api-to-perform-crud-operation-of-a-person-resources)
   * [TL;DR](#tldr)
@@ -218,14 +218,7 @@ source test-script.sh
 The above command will use [curl](https://curl.se/) to test all the endpoints in the API and output the corresponding response in the console.
 
 <!-- TOC --><a name="things-to-note-while-testing-the-script"></a>
-### Things to note while testing the script
 
-- The script perform CRUD on a single person resource. i.e it first creates, then read, update, and delete. The first time you run the script, you will get output similar to the one below:
-<img width="692" alt="image" src="https://github.com/princeibs/stage-2/assets/64266194/345899bc-bc05-4c97-93aa-9ef866c05cfd">
-This is because we are creating a brand new person and then using the id of a deleted user (from our last DELETE operation) to read, update, and delete.
-To navigate around this, copy the id of the new person created and replace the `user_id` parameter in the URL of the read, update, and delete request, and then rerun the script to see the other endpoints get executed. To test again, repeat the same step (i.e copy the id of the new user created from the last script execution and then replace the `user_id` parameter of the other endpoints read, update, delete with the new id)
-
-- Running the script for the first time will take some time to respond because the API is hosted on free tier server which shuts down the after 15 minutes of inactivity.
 
 <!-- TOC --><a name="known-limitations-and-assumptions"></a>
 ## Known Limitations and Assumptions
